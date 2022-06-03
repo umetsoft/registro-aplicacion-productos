@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registro de Aplicaciones de Productos | Editar aplicación</title>
+    <!-- Meta tag para moviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Estilos incluyendo: Bootstrap, Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" href="css/vendor.min.css">
+    <link id="mainStyles" rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link id="customStyles" rel="stylesheet" href="css/custom.css">
+    <!-- Modernizr -->
+    <script type="text/javascript" src="js/third-party/modernizr.min.js"></script>
+  </head>
+  <body>
+    <!-- Modal de agregar producto -->
+    <div class="modal fade" id="modal-producto" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Agregar producto</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <!-- Nombre -->
+              <div class="col-12">
+                <label for="producto-nombre">Nombre comercial:</label>
+                <input type="text" id="producto-nombre" class="form-control form-control-sm" placeholder="Nombre comercial del producto">
+              </div>
+              <!-- Ingrediente activo -->
+              <div class="col-12">
+                <label for="producto-ingrediente">Ingrediente activo:</label>
+                <input type="text" id="producto-ingrediente" class="form-control form-control-sm" placeholder="Ingrediente activo del producto">
+              </div>
+              <!-- Dosis -->
+              <div class="col-sm-3 col-6">
+                <label for="producto-dosis">Dosis (%):</label>
+                <input type="text" id="producto-dosis" class="form-control form-control-sm text-right" placeholder="Dosis" disabled="">
+              </div>
+              <!-- Cantidad -->
+              <div class="col-sm-3 col-6">
+                <label for="producto-cantidad">Cantidad (L):</label>
+                <input type="text" id="producto-cantidad" class="form-control form-control-sm text-right" placeholder="Cantidad" disabled="">
+              </div>
+              <!-- Fecha de carencia -->
+              <div class="col-sm-6 col-12">
+                <label for="producto-carencia">Fecha de carencia:</label>
+                <input type="text" id="producto-carencia" class="form-control form-control-sm" placeholder="Fecha de carencia" disabled="">
+              </div>
+              <!-- Justificacion -->
+              <div class="col-12">
+                <label for="producto-justificacion">Justificación:</label>
+                <select id="producto-justificacion" class="form-control form-control-sm" required="">
+                  <option value="" disabled="" selected="">Justificación de la aplicación</option>
+                  <option value="JUS01">JUS01 - Nombre de la justificación 1</option>
+                  <option value="JUS02">JUS02 - Nombre de la justificación 2</option>
+                  <option value="JUS03">JUS03 - Nombre de la justificación 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-sm btn-success" id="producto-agregar">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal de detalle de aplicacion -->
+    <div class="modal fade" id="modal-detalle" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Agregar detalle de aplicación</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <!-- Datos principales -->
+            <div class="form-group row" id="detalle-datos-principales">
+              <!-- Maquinaria -->
+              <div class="col-sm-6 col-12 d-none">
+                <label for="detalle-tractor">Tractor:</label>
+                <input type="text" id="detalle-tractor" class="form-control form-control-sm" placeholder="Nombre del tractor">
+              </div>
+              <div class="col-sm-6 col-12 d-none">
+                <label for="detalle-atomizador">Atomizador:</label>
+                <input type="text" id="detalle-atomizador" class="form-control form-control-sm" placeholder="Nombre del atomizador">
+              </div>
+              <!-- Mochila -->
+              <div class="col-12 d-none">
+                <div class="d-flex justify-content-between mb-2">
+                  <h5 class="align-self-center mb-0">Mochilas</h5>
+                  <div class="align-self-center text-right">
+                    <button class="btn btn-sm btn-secondary" id="detalle-mochilas-todo"><i class="icon-square-check"></i> <span class="d-sm-inline d-none">Seleccionar</span> todos</button>
+                  </div>
+                </div>
+                <div class="row" id="detalle-mochilas">
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M01" value="M01"><label class="custom-control-label" for="mochila-M01">M01</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M02" value="M02"><label class="custom-control-label" for="mochila-M02">M02</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M03" value="M03"><label class="custom-control-label" for="mochila-M03">M03</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M04" value="M04"><label class="custom-control-label" for="mochila-M04">M04</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M05" value="M05"><label class="custom-control-label" for="mochila-M05">M05</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M06" value="M06"><label class="custom-control-label" for="mochila-M06">M06</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M07" value="M07"><label class="custom-control-label" for="mochila-M07">M07</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M08" value="M08"><label class="custom-control-label" for="mochila-M08">M08</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M09" value="M09"><label class="custom-control-label" for="mochila-M09">M09</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M10" value="M10"><label class="custom-control-label" for="mochila-M10">M10</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M11" value="M11"><label class="custom-control-label" for="mochila-M11">M11</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M12" value="M12"><label class="custom-control-label" for="mochila-M12">M12</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M13" value="M13"><label class="custom-control-label" for="mochila-M13">M13</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M14" value="M14"><label class="custom-control-label" for="mochila-M14">M14</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M15" value="M15"><label class="custom-control-label" for="mochila-M15">M15</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M16" value="M16"><label class="custom-control-label" for="mochila-M16">M16</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M17" value="M17"><label class="custom-control-label" for="mochila-M17">M17</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M18" value="M18"><label class="custom-control-label" for="mochila-M18">M18</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M19" value="M19"><label class="custom-control-label" for="mochila-M19">M19</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="mochila-M20" value="M20"><label class="custom-control-label" for="mochila-M20">M20</label></div></div>
+                </div>
+              </div>
+              <!-- Supervisor -->
+              <div class="col-12 d-none">
+                <label for="detalle-supervisor">Supervisor:</label>
+                <input type="text" id="detalle-supervisor" class="form-control form-control-sm" placeholder="Supervisor (opcional)">
+              </div>
+              <!-- Sprays -->
+              <div class="col-12 d-none">
+                <div class="d-flex justify-content-between mb-2">
+                  <h5 class="align-self-center mb-0">Sprays</h5>
+                  <div class="align-self-center text-right">
+                    <button class="btn btn-sm btn-secondary" id="detalle-sprays-todo"><i class="icon-square-check"></i> <span class="d-sm-inline d-none">Seleccionar</span> todos</button>
+                  </div>
+                </div>
+                <div class="row" id="detalle-sprays">
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S01" value="S01"><label class="custom-control-label" for="spray-S01">S01</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S02" value="S02"><label class="custom-control-label" for="spray-S02">S02</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S03" value="S03"><label class="custom-control-label" for="spray-S03">S03</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S04" value="S04"><label class="custom-control-label" for="spray-S04">S04</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S05" value="S05"><label class="custom-control-label" for="spray-S05">S05</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S06" value="S06"><label class="custom-control-label" for="spray-S06">S06</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S07" value="S07"><label class="custom-control-label" for="spray-S07">S07</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S08" value="S08"><label class="custom-control-label" for="spray-S08">S08</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S09" value="S09"><label class="custom-control-label" for="spray-S09">S09</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S10" value="S10"><label class="custom-control-label" for="spray-S10">S10</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S11" value="S11"><label class="custom-control-label" for="spray-S11">S11</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S12" value="S12"><label class="custom-control-label" for="spray-S12">S12</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S13" value="S13"><label class="custom-control-label" for="spray-S13">S13</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S14" value="S14"><label class="custom-control-label" for="spray-S14">S14</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S15" value="S15"><label class="custom-control-label" for="spray-S15">S15</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S16" value="S16"><label class="custom-control-label" for="spray-S16">S16</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S17" value="S17"><label class="custom-control-label" for="spray-S17">S17</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S18" value="S18"><label class="custom-control-label" for="spray-S18">S18</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-S19" value="S19"><label class="custom-control-label" for="spray-S19">S19</label></div></div>
+                  <div class="col-sm-five col-4"><div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="spray-s20" value="S20"><label class="custom-control-label" for="spray-S20">S20</label></div></div>
+                </div>
+                <!-- label for="detalle-spray">Rango de sprays:</label>
+                <input type="text" id="detalle-spray" class="form-control form-control-sm" placeholder="Rango de sprays (1-14)" -->
+              </div>
+            </div>
+            <!-- Valvulas -->
+            <div id="detalle-valvulas">
+              <div class="d-flex justify-content-between mb-2">
+                <h5 class="align-self-center mb-0">V&aacute;lvulas</h5>
+                <div class="align-self-center text-right">
+                  <button class="btn btn-sm btn-primary" id="detalle-valvula-agregar"><i class="icon-plus"></i> Agregar <span class="d-sm-inline d-none">v&aacute;lvula</span></button>
+                </div>
+              </div>
+            </div>
+            <!-- Operarios -->
+            <div id="detalle-operarios">
+              <div class="d-flex justify-content-between mb-2">
+                <h5 class="align-self-center mb-0">Operarios</h5>
+                <div class="align-self-center text-right">
+                  <button class="btn btn-sm btn-primary" id="detalle-operario-agregar"><i class="icon-plus"></i> Agregar <span class="d-sm-inline d-none">operario</span></button>
+                </div>
+              </div>
+              <!-- div class="form-group row">
+                <div class="col"><input type="text" class="form-control form-control-sm" placeholder="Nombre del operario"></div>
+                <div class="col-auto text-right pl-0">
+                  <button class="btn btn-sm btn-danger form-remove" data-toggle="tooltip" data-placement="top" data-original-title="Quitar"><i class="icon-cross"></i></button>
+                </div>
+              </div -->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-success btn-sm" type="button" id="detalle-agregar">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--      -->
+    <!-- Menu -->
+    <!--      -->
+    <div class="offcanvas-container" id="mobile-menu">
+      <div class="account-link">
+        <div class="user-ava"><img src="img/user.png" alt="Daniel Arana" title="Daniel Arana"></div>
+        <div class="user-info">
+          <h6 class="user-name">Daniel Arana</h6>
+          <span class="text-sm text-white opacity-60">Usuario</span>
+        </div>
+      </div>
+      <nav class="offcanvas-menu">
+        <ul class="menu">
+          <li class="active"><a href="empleado-aplicacion.html">Aplicaciones</a></li>
+          <li><a href="#">Transferencias</a></li>
+          <li class="offcanvas-header"><h3 class="offcanvas-title">Opciones de usuario</h3></li>
+          <li><a href="perfil.html">Ver perfil</a></li>
+          <li><a href="index.html">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!--        -->
+    <!-- Header -->
+    <!--        -->
+    <div class="topbar d-none"></div>
+    <header class="navbar navbar-sticky">
+      <div class="site-branding"><div class="inner">
+        <a class="offcanvas-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
+      </div></div>
+      <h3 class="navbar-title with-menu">
+        <span class="d-md-inline d-none">Registro de</span> Aplicaciones <span class="d-sm-inline d-none">de Productos</span>
+      </h3>
+      <!-- Toolbar -->
+      <div class="toolbar"><div class="inner"><div class="tools">
+        <div class="search"><i class="icon-bell"></i></div>
+        <div class="account">
+          <!-- Icono del usuario -->
+          <i class="icon-head"></i> <span class="account-label">Usuario</span>
+          <ul class="toolbar-dropdown">
+            <!-- Breve info del usuario -->
+            <li class="sub-menu-user">
+              <div class="user-ava"><img src="img/user.png" alt="Daniel Arana" title="Daniel Arana"></div>
+              <div class="user-info">
+                <h6 class="user-name">Daniel Arana</h6>
+                <span class="text-xs text-muted">Usuario</span>
+              </div>
+            </li>
+            <!-- Menu del usuario -->
+            <li><a href="perfil.html"><i class="icon-cog"></i>Configurar perfil</a></li>
+            <li><a href="index.html"><i class="icon-unlock"></i>Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div></div></div>
+    </header>
+    <!--           -->
+    <!-- Contenido -->
+    <!--           -->
+    <div class="offcanvas-wrapper">
+      <div class="container-fluid">
+        <h3>Editar aplicación de producto</h3>
+        <div class="accordion" id="aplicacion-acordeon" role="tablist">
+          <!-- Datos principales -->
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a class="collapsed" href="#aplicacion-datos-principales" data-toggle="collapse">Datos principales</a></h6>
+            </div>
+            <div class="collapse show" id="aplicacion-datos-principales" data-parent="#aplicacion-acordeon" role="tabpanel">
+              <div class="card-body">
+                <div class="form-group row">
+                  <!-- Fecha de aplicacion -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-fecha">Fecha de aplicación:</label>
+                    <input type="text" id="aplicacion-fecha" class="form-control form-control-sm date-input" placeholder="Fecha de aplicación" disabled="">
+                  </div>
+                  <!-- Cultivo/Variedad -->
+                  <div class="col-lg-4 col-sm-8 col-12">
+                    <label for="aplicacion-cultivo">Cultivo/Variedad:</label>
+                    <input type="text" id="aplicacion-cultivo" class="form-control form-control-sm" placeholder="Nombre del cultivo/Variedad del cultivo" value="031010010001 - PALTA/HASS" disabled="">
+                  </div>
+                  <!-- Lote -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-lote">Lote:</label>
+                    <input type="text" id="aplicacion-lote" class="form-control form-control-sm" placeholder="Lote de la aplicación" value="PA1" disabled="">
+                  </div>
+                  <!-- Campaña -->
+                  <div class="col-lg-4 col-sm-8 col-12">
+                    <label for="aplicacion-campana">Campaña:</label>
+                    <input type="text" id="aplicacion-campana" class="form-control form-control-sm" placeholder="Nombre de campaña" value="2018/2019 PALTA" disabled="">
+                  </div>
+                  <!-- Metodo de aplicacion -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-metodo">Método:</label>
+                    <input type="text" id="aplicacion-metodo" class="form-control form-control-sm" placeholder="Método de aplicación" disabled="">
+                  </div>
+                  <!-- Volumenes de mezcla -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-volumen-total">Volumen total de mezcla:</label>
+                    <input type="number" id="aplicacion-volumen-total" class="form-control form-control-sm text-right" placeholder="Volumen total de mezcla (L)" value="400" inputmode="decimal" disabled="">
+                  </div>
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-volumen-hectarea">Volumen mezcla por ha:</label>
+                    <input type="number" id="aplicacion-volumen-hectarea" class="form-control form-control-sm text-right" placeholder="Volumen de mezcla por ha (L)" value="80" inputmode="decimal" disabled="">
+                  </div>
+                  <!-- Responsable -->
+                  <div class="col-lg-4 col-sm-8 col-12">
+                    <label for="aplicacion-responsable">Responsable:</label>
+                    <input type="text" id="aplicacion-responsable" class="form-control form-control-sm" placeholder="Responsable de la aplicación" value="Daniel Arana" disabled="">
+                  </div>
+                  <!-- Fecha de cosecha según carencia -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-cosecha">Fecha posible de carencia:</label>
+                    <input type="text" id="aplicacion-cosecha" class="form-control form-control-sm" placeholder="Fecha cosecha según carencia" value="16/01/2019" disabled="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Productos -->
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a class="collapsed" href="#aplicacion-productos" data-toggle="collapse">Productos</a></h6>
+            </div>
+            <div class="collapse" id="aplicacion-productos" data-parent="#aplicacion-acordeon" role="tabpanel">
+              <div class="card-body search-results">
+                <div>Mostrando un total de <strong id="productos-cantidad">2</strong> productos.</div>
+                <!-- div class="row">
+                  <div class="col-sm-auto search-buttons">
+                    <button class="btn btn-sm btn-success" id="boton-producto-agregar"><i class="icon-plus"></i> Agregar producto</button>
+                  </div>
+                  <div class="col-sm search-info">Mostrando un total de <strong id="productos-cantidad">2</strong> productos.</div>
+                </div -->
+                <!-- Producto 1 -->
+                <div class="card">
+                  <h5>016010010001 - ABAMECTINA 1.8 SC (PROHASS)</h5>
+                  <div class="card-text">
+                    <div class="card-item"><strong>Ingrediente activo:</strong> ABAMECTINA</div>
+                    <div class="card-item"><strong>Dosis:</strong> 1.8%</div>
+                    <div class="card-item"><strong>Fecha de carencia:</strong> <span class="producto-carencia"></span></div>
+                    <div class="card-item"><strong>Cantidad a aplicar:</strong> 7.2 L</div>
+                    <div class="card-item"><strong>Justificación:</strong> JUS001 - Olygonichus sp</div>
+                  </div>
+                  <!-- div class="row">
+                    <div class="col details-col">
+                    </div>
+                    <div class="col-xl-auto buttons-col">
+                      <button class="btn btn-sm btn-info producto-editar" data-toggle="tooltip" data-original-title="Editar"><i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span></button>
+                      <button class="btn btn-sm btn-danger producto-eliminar" data-toggle="tooltip" data-original-title="Eliminar"><i class="icon-trash"></i> <span class="d-xl-none d-sm-inline d-none">Eliminar</span></button>
+                    </div>
+                  </div -->
+                </div>
+                <!-- Producto 2 -->
+                <div class="card">
+                  <h5>016010010031 - ACARSTIN L 600</h5>
+                  <div class="card-text">
+                    <div class="card-item"><strong>Ingrediente activo:</strong> ACARSTIN</div>
+                    <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                    <div class="card-item"><strong>Fecha de carencia:</strong> <span class="producto-carencia"></span></div>
+                    <div class="card-item"><strong>Cantidad a aplicar:</strong> 40 L</div>
+                    <div class="card-item"><strong>Justificación:</strong> JUS005 - Aleurotrachelus sp</div>
+                  </div>
+                  <!-- div class="row">
+                    <div class="col details-col"></div>
+                    <div class="col-xl-auto buttons-col">
+                      <button class="btn btn-sm btn-info" data-toggle="tooltip" data-original-title="Editar">
+                        <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                      </button>
+                      <button class="btn btn-sm btn-danger producto-eliminar" data-toggle="tooltip" data-original-title="Eliminar">
+                        <i class="icon-trash"></i> <span class="d-xl-none d-sm-inline d-none">Eliminar</span>
+                      </button>
+                    </div>
+                  </div -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Registros de aplicación -->
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a class="collapsed" href="#aplicacion-detalle" data-toggle="collapse">Detalles de aplicaci&oacute;n</a></h6>
+            </div>
+            <div class="collapse" id="aplicacion-detalle" data-parent="#aplicacion-acordeon" role="tabpanel">
+              <div class="card-body search-results">
+                <div class="row">
+                  <div class="col-sm-auto col-12 search-buttons">
+                    <button class="btn btn-sm btn-success" id="modal-detalle-abrir" data-toggle="modal" data-target="#modal-detalle"><i class="icon-plus"></i> Agregar detalle</button>
+                  </div>
+                  <div class="col-sm col-12 search-info">Mostrando un total de <strong id="detalle-cantidad">0</strong> detalles de aplicación.</div>
+                </div>
+                <!-- Registro 1 -->
+                <!-- div class="card">
+                  <div class="row">
+                    <div class="col details-col">
+                      <div class="card-item"><strong>Tractor:</strong> NH-4 Arbus 3</div>
+                      <div class="card-item"><strong>Atomizador:</strong> Nombre del atomizador</div>
+                      <div class="card-item"><strong>V&aacute;lvulas:</strong> (63, 12500 L) - (64, 10800 L) - (65, 11000 L) - (66, 11900 L)</div>
+                      <div class="card-item"><strong>Operarios:</strong> César Paucar Ram&iacute;rez, Mario Dur&aacute;n Flores</div>
+                    </div>
+                    <div class="col-xl-auto buttons-col">
+                      <button class="btn btn-sm btn-info" data-toggle="tooltip" data-original-title="Editar">
+                        <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                      </button>
+                      <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Eliminar">
+                        <i class="icon-trash"></i> <span class="d-xl-none d-sm-inline d-none">Eliminar</span>
+                      </button>
+                    </div>
+                  </div>
+                </div -->
+                <!-- Registro 2 -->
+                <!-- div class="card">
+                  <div class="row">
+                    <div class="col details-col">
+                      <div class="card-item"><strong>Tractor:</strong> NH-6 FEDE 2</div>
+                      <div class="card-item"><strong>Atomizador:</strong> Nombre del atomizador</div>
+                      <div class="card-item"><strong>V&aacute;lvulas:</strong> (67, 12200 L) - (68, 13300 L) - (69, 11400 L) - (70, 11300 L)</div>
+                      <div class="card-item"><strong>Operarios:</strong> Mario Dur&aacute;n Flores</div>
+                    </div>
+                    <div class="col-xl-auto buttons-col">
+                      <button class="btn btn-sm btn-info" data-toggle="tooltip" data-original-title="Editar">
+                        <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                      </button>
+                      <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Eliminar">
+                        <i class="icon-trash"></i> <span class="d-xl-none d-sm-inline d-none">Eliminar</span>
+                      </button>
+                    </div>
+                  </div>
+                </div -->
+                <!-- Registro 3 -->
+                <!-- div class="card">
+                  <div class="row">
+                    <div class="col details-col">
+                      <div class="card-item"><strong>Tractor:</strong> AC Mañez 1</div>
+                      <div class="card-item"><strong>Atomizador:</strong> Nombre del atomizador</div>
+                      <div class="card-item"><strong>V&aacute;lvulas:</strong> (71, 13900 L) - (72, 13300 L) - (73, 11400 L)</div>
+                      <div class="card-item"><strong>Operarios:</strong> Mario Dur&aacute;n Flores</div>
+                    </div>
+                    <div class="col-xl-auto buttons-col">
+                      <button class="btn btn-sm btn-info" data-toggle="tooltip" data-original-title="Editar">
+                        <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                      </button>
+                      <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Eliminar">
+                        <i class="icon-trash"></i> <span class="d-xl-none d-sm-inline d-none">Eliminar</span>
+                      </button>
+                    </div>
+                  </div>
+                </div -->
+              </div>
+            </div>
+          </div>
+          <!-- Otros datos -->
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a class="collapsed" href="#acordeon-otros-datos" data-toggle="collapse">Otros datos</a></h6>
+            </div>
+            <div class="collapse" id="acordeon-otros-datos" data-parent="#aplicacion-acordeon" role="tabpanel">
+              <div class="card-body pb-2">
+                <div class="form-group row">
+                  <!-- Temperatura -->
+                  <div class="col-sm-4 col-6">
+                    <label for="aplicacion-temperatura">Temperatura:</label>
+                    <input type="number" id="aplicacion-temperatura" inputmode="decimal" class="form-control form-control-sm" placeholder="Temperatura (&deg;C)" min="-273.15" step="0.01">
+                  </div>
+                  <!-- Temperatura -->
+                  <div class="col-sm-4 col-6">
+                    <label for="aplicacion-humedad">Humedad relativa:</label>
+                    <input type="number" id="aplicacion-humedad" inputmode="decimal" class="form-control form-control-sm" placeholder="Humedad relativa (%)" min="0" step="0.01" max="100">
+                  </div>
+                  <!-- Temperatura -->
+                  <div class="col-sm-4 col-12">
+                    <label for="aplicacion-viento">Viento:</label>
+                    <input type="number" id="aplicacion-viento" inputmode="decimal" class="form-control form-control-sm" placeholder="Viento (m/s)" min="0" step="0.01">
+                  </div>
+                  <!-- Observaciones -->
+                  <div class="col-12">
+                    <label for="aplicacion-observaciones">Observaciones:</label>
+                    <textarea id="aplicacion-observaciones" class="form-control" placeholder="Observaciones"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Botones -->
+        <div class="text-center">
+          <a class="btn btn-sm btn-success mt-2" href="empleado-aplicacion.html?actualizar">Actualizar</a>
+          <a class="btn btn-sm btn-outline-secondary mt-2" href="empleado-aplicacion.html">Cancelar</a>
+        </div>
+      </div>
+    </div>
+    <!-- Boton para volver arriba -->
+    <a class="scroll-to-top-btn" href="#">
+      <i class="icon-arrow-up"></i>
+    </a>
+    <!-- Backdrop -->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script type="text/javascript" src="js/third-party/vendor.min.js"></script>
+    <script type="text/javascript" src="js/third-party/scripts.min.js"></script>
+    <script type="text/javascript" src="js/third-party/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/utilidades.js"></script>
+    <script type="text/javascript" src="js/aplicacion/datos/metodo.js"></script>
+    <script type="text/javascript" src="js/aplicacion/datos/valvulas.js"></script>
+    <script type="text/javascript" src="js/aplicacion/solicitud.js"></script>
+  </body>
+</html>

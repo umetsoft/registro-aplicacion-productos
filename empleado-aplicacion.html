@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registro de Aplicaciones de Productos | Solicitudes</title>
+    <!-- Meta tag para moviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Estilos incluyendo: Bootstrap, Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" href="css/vendor.min.css">
+    <link id="mainStyles" rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link id="customStyles" rel="stylesheet" href="css/custom.css">
+    <!-- Modernizr -->
+    <script type="text/javascript" src="js/third-party/modernizr.min.js"></script>
+  </head>
+  <body>
+    <!--      -->
+    <!-- Menu -->
+    <!--      -->
+    <div class="offcanvas-container" id="mobile-menu">
+      <div class="account-link">
+        <div class="user-ava"><img src="img/user.png" alt="Daniel Arana" title="Daniel Arana"></div>
+        <div class="user-info">
+          <h6 class="user-name">Daniel Arana</h6>
+          <span class="text-sm text-white opacity-60">Usuario</span>
+        </div>
+      </div>
+      <nav class="offcanvas-menu">
+        <ul class="menu">
+          <li class="active"><a href="empleado-aplicacion.html">Solicitudes</a></li>
+          <li><a href="#">Por atender</a></li>
+          <li><a href="#">Históricos</a></li>
+          <li class="offcanvas-header"><h3 class="offcanvas-title">Opciones de usuario</h3></li>
+          <li><a href="perfil.html">Ver perfil</a></li>
+          <li><a href="index.html">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!--        -->
+    <!-- Header -->
+    <!--        -->
+    <div class="topbar d-none"></div>
+    <header class="navbar navbar-sticky">
+      <div class="site-branding"><div class="inner">
+        <a class="offcanvas-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
+      </div></div>
+      <h3 class="navbar-title with-menu">
+        <span class="d-md-inline d-none">Registro de</span> Aplicaciones <span class="d-sm-inline d-none">de Productos</span>
+      </h3>
+      <!-- Toolbar -->
+      <div class="toolbar"><div class="inner"><div class="tools">
+        <div class="search"><i class="icon-bell"></i></div>
+        <div class="account">
+          <!-- Icono del usuario -->
+          <i class="icon-head"></i> <span class="account-label">Usuario</span>
+          <ul class="toolbar-dropdown">
+            <!-- Breve info del usuario -->
+            <li class="sub-menu-user">
+              <div class="user-ava"><img src="img/user.png" alt="Daniel Arana" title="Daniel Arana"></div>
+              <div class="user-info">
+                <h6 class="user-name">Daniel Arana</h6>
+                <span class="text-xs text-muted">Usuario</span>
+              </div>
+            </li>
+            <!-- Menu del usuario -->
+            <li><a href="perfil.html"><i class="icon-cog"></i>Configurar perfil</a></li>
+            <li><a href="index.html"><i class="icon-unlock"></i>Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div></div></div>
+    </header>
+    <!--           -->
+    <!-- Contenido -->
+    <!--           -->
+    <div class="offcanvas-wrapper">
+      <div class="container-fluid">
+        <!-- Pestañas -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item"><a class="nav-link active" href="#aplicaciones" data-toggle="tab" role="tab">
+            Solicitudes <span class="badge badge-primary">5</span>
+          </a></li>
+          <li class="nav-item"><a class="nav-link" href="#">
+            Por atender <span class="badge badge-default">0</span>
+          </a></li>
+          <li class="nav-item"><a class="nav-link" href="#">
+            Históricos <span class="badge badge-default">0</span>
+          </a></li>
+        </ul>
+        <h4 class="d-sm-none">Solicitudes <span class="badge badge-primary">5</span></h4>
+        <!-- Contenido de las pestañas -->
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="aplicaciones" role="tabpanel">
+            <!--                        -->
+            <!-- Formulario de busqueda -->
+            <!--                        -->
+            <form class="search-box">
+              <div class="form-group row">
+                <!-- Numero de registro de aplicacion -->
+                <div class="col-lg-2 col-sm-4 col-12">
+                  <label for="aplicacion-numero">N° de aplicación:</label>
+                  <input type="text" id="aplicacion-numero" class="form-control form-control-sm" placeholder="N° de aplicación">
+                </div>
+                <!-- Cultivo/variedad -->
+                <div class="col-lg-4 col-sm-8 col-12">
+                  <label for="aplicacion-cultivo-variedad">Cultivo/Variedad:</label>
+                  <input type="text" id="aplicacion-cultivo-variedad" class="form-control form-control-sm autocomplete-input" placeholder="Nombre del cultivo / variedad del cultivo">
+                </div>
+                <!-- Lote -->
+                <div class="col-lg-2 col-sm-4 col-12">
+                  <label for="aplicacion-lote">Lote:</label>
+                  <input type="text" id="aplicacion-lote" class="form-control form-control-sm autocomplete-input" placeholder="N° de lote">
+                </div>
+                <!-- Campaña -->
+                <div class="col-lg-4 col-sm-8 col-12 hidden-mobile">
+                  <label for="aplicacion-campanha">Campaña:</label>
+                  <input type="text" id="aplicacion-campanha" class="form-control form-control-sm autocomplete-input" placeholder="Nombre de la campaña">
+                </div>
+              </div>
+              <div class="form-group row">
+                <!-- Fecha de aplicacion -->
+                <div class="col-lg-4 col-sm-8 col-12 hidden-mobile order-first">
+                  <label for="aplicacion-fecha-desde">Fecha de aplicación:</label>
+                  <div class="row">
+                    <div class="col-6"><input type="text" id="aplicacion-fecha-desde" class="form-control form-control-sm date-input" placeholder="Aplicación desde..."></div>
+                    <div class="col-6"><input type="text" id="aplicacion-fecha-hasta" class="form-control form-control-sm date-input" placeholder="Aplicación hasta..."></div>
+                  </div>
+                </div>
+                <!-- Fecha de cosecha -->
+                <div class="col-lg-4 col-sm-8 col-12 hidden-mobile">
+                  <label for="aplicacion-cosecha-desde">Fecha de cosecha:</label>
+                  <div class="row">
+                    <div class="col-6"><input type="text" id="aplicacion-cosecha-desde" class="form-control form-control-sm date-input" placeholder="Cosecha desde..."></div>
+                    <div class="col-6"><input type="text" id="aplicacion-cosecha-hasta" class="form-control form-control-sm date-input" placeholder="Cosecha hasta..."></div>
+                  </div>
+                </div>
+                <!-- Metodo de aplicacion -->
+                <div class="col-lg-2 col-sm-4 col-12 hidden-mobile order-lg-0 order-sm-first">
+                  <label for="aplicacion-metodo">Método:</label>
+                  <select id="aplicacion-metodo" class="form-control form-control-sm">
+                    <option value="0" selected="">Todos</option>
+                  </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-lg-2 col-sm-4 col-12 hidden-mobile">
+                  <label for="aplicacion-estado">Estado:</label>
+                  <select id="aplicacion-estado" class="form-control form-control-sm">
+                    <option value="0" selected>Todos</option>
+                    <option value="1">Borrador</option>
+                    <option value="2">Solicitado</option>
+                    <option value="3">Entregado</option>
+                    <option value="4">Completado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <!-- Responsable -->
+                <div class="col-lg-4 col-sm-6 col-12 hidden-mobile">
+                  <label for="aplicacion-responsable">Responsable:</label>
+                  <input type="text" id="aplicacion-responsable" class="form-control form-control-sm" placeholder="Nombres y apellidos del responsable" value="Daniel Arana" disabled="">
+                </div>
+                <!-- Producto -->
+                <div class="col-lg-4 col-sm-6 col-12 hidden-mobile">
+                  <label for="aplicacion-producto">Producto:</label>
+                  <input type="text" id="aplicacion-producto" class="form-control form-control-sm autocomplete-input" placeholder="Código o nombre del producto">
+                </div>
+                <!-- Botones -->
+                <div class="col-lg-4 col-12 text-right">
+                  <button type="submit" class="btn btn-sm btn-info"><i class="icon-search"></i> Buscar</button>
+                  <button type="reset" class="btn btn-sm btn-secondary">Limpiar</button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-dark btn-block" id="filter-button">Ver más filtros</button>
+            </form>
+            <!-- Resultados de la busqueda -->
+            <div class="row mb-2">
+              <div class="col-md-auto col-12 search-buttons">
+                <button class="btn btn-sm btn-success">
+                  <i class="icon-open"></i> Exportar <span class="d-sm-inline d-none">a Excel</span>
+                </button>
+                <a class="btn btn-sm btn-primary" href="empleado-aplicacion-borrador.html">
+                  <i class="icon-plus"></i> Crear <span class="d-sm-inline d-none">aplicación</span>
+                </a>
+              </div>
+              <!-- <strong id="aplicacion-borradores-mostrando">3</strong> de -->
+              <!-- <strong id="aplicacion-solicitudes-mostrando">5</strong> de -->
+              <div class="col-md col-12 search-info">
+                Se encontraron <strong id="aplicacion-borradores-total">3</strong> borradores y <strong id="aplicacion-solicitudes-total">10</strong> solicitudes.
+              </div>
+            </div>
+            <!-- Acordeon de resultados -->
+            <div class="accordion" id="acordeon-resultados" role="tablist">
+              <!--            -->
+              <!-- Borradores -->
+              <!--            -->
+              <div class="card">
+                <div class="card-header" role="tab">
+                  <h6><a class="collapsed" href="#acordeon-borradores" data-toggle="collapse">Borradores</a></h6>
+                </div>
+                <div class="collapse" id="acordeon-borradores" data-parent="#acordeon-resultados" role="tabpanel">
+                  <div class="card-body search-results">
+                    <!-- Resultado 1 -->
+                    <div class="card">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Borrador de Aplicación N° 1234 - <span class="text-primary">Aspersión con maquinarias</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> 28/05/2018</div>
+                            <div class="card-item"><strong>Lote:</strong> 4567</div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> Naranja / Lane late</div>
+                            <div class="card-item"><strong>Campaña:</strong> Nombre de la campaña</div>
+                            <div class="card-item"><strong>Fecha de cosecha/carencia:</strong> 03/03/2018</div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> 3,500 L</div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> 131,500 L</div>
+                          </div>
+                        </div>
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>5</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-borrador.html?editar" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-danger borrador-eliminar" data-toggle="tooltip" data-placement="top" data-original-title="Borrar"><i class="icon-trash"></i> <span class="d-xl-none d-sm-inline d-none">Borrar</span></button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Resultado 2 -->
+                    <div class="card">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Borrador de Aplicación N° 2345 - <span class="text-primary">Aspersión con maquinarias</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> 28/05/2018</div>
+                            <div class="card-item"><strong>Lote:</strong> 4567</div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> Naranja / Lane late</div>
+                            <div class="card-item"><strong>Campaña:</strong> Nombre de la campaña</div>
+                            <div class="card-item"><strong>Fecha de cosecha/carencia:</strong> 03/03/2018</div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> 3,500 L</div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> 131,500 L</div>
+                          </div>
+                        </div>
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>8</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-borrador.html?editar" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-danger borrador-eliminar" data-toggle="tooltip" data-placement="top" data-original-title="Borrar">
+                            <i class="icon-trash"></i> <span class="d-xl-none d-sm-inline d-none">Borrar</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Resultado 3 -->
+                    <div class="card">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Borrador de Aplicación N° 3456 - <span class="text-primary">Aspersión con maquinarias</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> 28/05/2018</div>
+                            <div class="card-item"><strong>Lote:</strong> 4567</div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> Naranja / Lane late</div>
+                            <div class="card-item"><strong>Campaña:</strong> Nombre de la campaña</div>
+                            <div class="card-item"><strong>Fecha de cosecha/carencia:</strong> 03/03/2018</div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> 3,500 L</div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> 131,500 L</div>
+                          </div>
+                        </div>
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>10</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-borrador.html?editar" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-danger borrador-eliminar" data-toggle="tooltip" data-placement="top" data-original-title="Borrar">
+                            <i class="icon-trash"></i> <span class="d-xl-none d-sm-inline d-none">Borrar</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--             -->
+              <!-- Solicitudes -->
+              <!--             -->
+              <div class="card">
+                <div class="card-header" role="tab">
+                  <h6><a class="collapsed" href="#acordeon-solicitudes" data-toggle="collapse">Solicitudes</a></h6>
+                </div>
+                <div class="collapse" id="acordeon-solicitudes" data-parent="#acordeon-resultados" role="tabpanel">
+                  <div class="card-body">
+                    <!-- Resultado 1 -->
+                    <div class="card">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Solicitud de Aplicación N° 1234 - <span class="text-primary">Aspersión con maquinarias</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> <span class="aplicacion-fecha">28/08/2018</span></div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> <span class="aplicacion-cultivo">Naranja/Lane late</span></div>
+                            <div class="card-item"><strong>Lote:</strong> <span class="aplicacion-lote">LL01</span></div>
+                            <div class="card-item"><strong>Campaña:</strong> <span class="aplicacion-campana">Nombre de la campaña</span></div>
+                            <div class="card-item"><strong>Fecha de cosecha según carencia:</strong> <span class="aplicacion-cosecha">03/03/2018</span></div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> <span class="aplicacion-volumen">131,500 L</span></div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> <span class="aplicacion-volumen-hectarea">3,500 L</span></div>
+                          </div>
+                        </div>
+                        <!-- Botones -->
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>0</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-solicitud.html?metodo=2" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> 000000000001 - Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> 000000000002 - Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Resultado 2 -->
+                    <div class="card">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Solicitud de Aplicación N° 2345 - <span class="text-primary">Aspersión con mochila</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> <span class="aplicacion-fecha">28/08/2018</span></div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> <span class="aplicacion-cultivo">Naranja/Lane late</span></div>
+                            <div class="card-item"><strong>Lote:</strong> <span class="aplicacion-lote">LL02</span></div>
+                            <div class="card-item"><strong>Campaña:</strong> <span class="aplicacion-campana">Nombre de la campaña</span></div>
+                            <div class="card-item"><strong>Fecha de cosecha según carencia:</strong> <span class="aplicacion-cosecha">03/03/2018</span></div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> <span class="aplicacion-volumen">131,500 L</span></div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> <span class="aplicacion-volumen-hectarea">3,500 L</span></div>
+                          </div>
+                        </div>
+                        <!-- Botones -->
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>4</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-solicitud.html?metodo=3" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> 000000000001 - Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> 000000000002 - Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Resultado 3 -->
+                    <div class="card">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Solicitud de Aplicación N° 3456 - <span class="text-primary">Inyección con riego</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> <span class="aplicacion-fecha">28/08/2018</span></div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> <span class="aplicacion-cultivo">Naranja/Lane late</span></div>
+                            <div class="card-item"><strong>Lote:</strong> <span class="aplicacion-lote">LL03</span></div>
+                            <div class="card-item"><strong>Campaña:</strong> <span class="aplicacion-campana">Nombre de la campaña</span></div>
+                            <div class="card-item"><strong>Fecha de cosecha según carencia:</strong> <span class="aplicacion-cosecha">03/03/2018</span></div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> <span class="aplicacion-volumen">131,500 L</span></div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> <span class="aplicacion-volumen-hectarea">3,500 L</span></div>
+                          </div>
+                        </div>
+                        <!-- Botones -->
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>7</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-solicitud.html?metodo=5" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> 000000000001 - Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> 000000000002 - Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Resultado 4 -->
+                    <div class="card">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Solicitud de Aplicación N° 4567 - <span class="text-primary">Pastas/Cebos con spray</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> 28/05/2018</div>
+                            <div class="card-item"><strong>Lote:</strong> 4567</div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> Naranja / Lane late</div>
+                            <div class="card-item"><strong>Campaña:</strong> Nombre de la campaña</div>
+                            <div class="card-item"><strong>Fecha de cosecha según carencia:</strong> 03/03/2018</div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> 3,500 L</div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> 131,500 L</div>
+                          </div>
+                        </div>
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>8</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-solicitud.html?metodo=7" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Resultado 5 -->
+                    <div class="card">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Solicitud de Aplicación N° 5678 - <span class="text-primary">Pastas/Cebos sin elemento</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> 28/05/2018</div>
+                            <div class="card-item"><strong>Lote:</strong> 4567</div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> Naranja / Lane late</div>
+                            <div class="card-item"><strong>Campaña:</strong> Nombre de la campaña</div>
+                            <div class="card-item"><strong>Fecha de cosecha según carencia:</strong> 03/03/2018</div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> 3,500 L</div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> 131,500 L</div>
+                          </div>
+                        </div>
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>15</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-solicitud.html?metodo=8" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Resultado 6 -->
+                    <div class="card d-none">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Solicitud de Aplicación N° 6789 - <span class="text-primary">Drench con mochila</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> 28/05/2018</div>
+                            <div class="card-item"><strong>Lote:</strong> 4567</div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> Naranja / Lane late</div>
+                            <div class="card-item"><strong>Campaña:</strong> Nombre de la campaña</div>
+                            <div class="card-item"><strong>Fecha de cosecha según carencia:</strong> 03/03/2018</div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> 3,500 L</div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> 131,500 L</div>
+                          </div>
+                        </div>
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>18</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-solicitud.html?metodo=10" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Resultado 7 -->
+                    <div class="card d-none">
+                      <div class="row">
+                        <div class="col details-col">
+                          <h5>Solicitud de Aplicación N° 7890 - <span class="text-primary">Drench sin elemento</span></h5>
+                          <div class="card-text">
+                            <div class="card-item"><strong>Fecha de aplicación:</strong> 28/05/2018</div>
+                            <div class="card-item"><strong>Lote:</strong> 4567</div>
+                            <div class="card-item"><strong>Cultivo/Variedad:</strong> Naranja / Lane late</div>
+                            <div class="card-item"><strong>Campaña:</strong> Nombre de la campaña</div>
+                            <div class="card-item"><strong>Fecha de cosecha según carencia:</strong> 03/03/2018</div>
+                            <div class="card-item"><strong>Volumen de mezcla por hectárea:</strong> 3,500 L</div>
+                            <div class="card-item"><strong>Volumen de mezcla total:</strong> 131,500 L</div>
+                          </div>
+                        </div>
+                        <div class="col-xl-auto buttons-col">
+                          <!-- Dias trascurridos -->
+                          <div class="d-inline-block" data-toggle="tooltip" data-placement="top" data-original-title="Días trascurridos">
+                            <button class="btn btn-sm btn-outline-dark btn-days" disabled="">
+                              <strong>20</strong> <span class="d-xl-none d-sm-inline d-none">días trascurridos</span>
+                            </button>
+                          </div>
+                          <!-- Botones -->
+                          <a class="btn btn-sm btn-info" href="empleado-aplicacion-solicitud.html?metodo=11" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                            <i class="icon-paper"></i> <span class="d-xl-none d-sm-inline d-none">Editar</span>
+                          </a>
+                          <button class="btn btn-sm btn-outline-secondary aplicacion-ver-detalles" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles">
+                            <i class="icon-eye"></i> <span class="d-xl-none d-sm-inline d-none">Ver detalles</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="aplicacion-detalles">
+                        <hr class="my-2">
+                        <h6>Lista de productos</h6>
+                        <ul class="simple-list">
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Azufre mojable 80%</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Azufre</div>
+                            <div class="card-item"><strong>Dosis:</strong> 30%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 90 L</div>
+                          </li>
+                          <li>
+                            <div class="card-item"><strong>Producto:</strong> Maxi</div>
+                            <div class="card-item"><strong>Ingrediente activo:</strong> Poliéter</div>
+                            <div class="card-item"><strong>Dosis:</strong> 10%</div>
+                            <div class="card-item"><strong>Fecha de carencia:</strong> 10/09/2018</div>
+                            <div class="card-item"><strong>Cantidad:</strong> 30 L</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Boton de ver más -->
+                    <div class="text-center mt-2">
+                      <button class="btn btn-sm btn-dark" id="aplicacion-solicitudes-ver-mas">Ver más</button>
+                    </div>
+                    <!-- Paginado -->
+                    <!-- div class="entry-navigation">
+                      <div class="column text-left"><a class="btn btn-sm btn-outline-secondary" href="#">
+                        <i class="icon-arrow-left"></i> <span class="d-sm-inline d-none">Anterior</span>
+                      </a></div>
+                      <div class="column">Página <strong id="solicitudes-paginado-actual">1</strong> de <strong id="solicitudes-paginado-total">2</strong></div>
+                      <div class="column text-right"><a class="btn btn-outline-secondary btn-sm" href="#">
+                        <span class="d-sm-inline d-none">Siguiente</span> <i class="icon-arrow-right"></i>
+                      </a></div>
+                    </div -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fin -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Boton para volver arriba -->
+    <a class="scroll-to-top-btn" href="#">
+      <i class="icon-arrow-up"></i>
+    </a>
+    <!-- Backdrop -->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script type="text/javascript" src="js/third-party/vendor.min.js"></script>
+    <script type="text/javascript" src="js/third-party/scripts.min.js"></script>
+    <script type="text/javascript" src="js/third-party/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/utilidades.js"></script>
+    <script type="text/javascript" src="js/aplicacion/datos/metodo.js"></script>
+    <script type="text/javascript" src="js/aplicacion/datos/cultivo-variedad.js"></script>
+    <script type="text/javascript" src="js/aplicacion/datos/producto.js"></script>
+    <script type="text/javascript" src="js/aplicacion/busqueda.js"></script>
+  </body>
+</html>

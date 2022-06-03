@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registro de Aplicaciones de Productos | Nueva aplicación</title>
+    <!-- Meta tag para moviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos incluyendo: Bootstrap, Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" href="css/vendor.min.css">
+    <link id="mainStyles" rel="stylesheet" href="css/styles.min.css">
+    <link id="jQueryUI" rel="stylesheet" href="css/jquery-ui.min.css">
+    <link id="customStyles" rel="stylesheet" href="css/custom.css">
+    <!-- Modernizr -->
+    <script type="text/javascript" src="js/third-party/modernizr.min.js"></script>
+  </head>
+  <body>
+    <!-- Modal de agregar producto -->
+    <div class="modal fade" id="modal-producto" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Agregar producto</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <!-- Nombre -->
+              <div class="col-12">
+                <label for="producto-nombre">Nombre comercial o ingrediente activo:</label>
+                <input type="text" id="producto-nombre" class="form-control form-control-sm" placeholder="Nombre comercial o ingrediente activo del producto">
+              </div>
+              <!-- Ingrediente activo -->
+              <!-- div class="col-12">
+                <label for="producto-ingrediente">Ingrediente activo:</label>
+                <input type="text" id="producto-ingrediente" class="form-control form-control-sm" placeholder="Ingrediente activo del producto">
+              </div -->
+              <!-- Dosis -->
+              <div class="col-sm-3 col-6">
+                <label for="producto-dosis">Dosis:</label>
+                <input type="text" id="producto-dosis" class="form-control form-control-sm text-right" placeholder="Dosis" disabled="">
+              </div>
+              <!-- Cantidad -->
+              <div class="col-sm-3 col-6">
+                <label for="producto-cantidad">Cantidad:</label>
+                <input type="text" id="producto-cantidad" class="form-control form-control-sm text-right" placeholder="Cantidad" disabled="">
+              </div>
+              <!-- Fecha de carencia -->
+              <div class="col-sm-6 col-12">
+                <label for="producto-carencia">Fecha de carencia:</label>
+                <input type="text" id="producto-carencia" class="form-control form-control-sm" placeholder="Fecha de carencia" disabled="">
+              </div>
+              <!-- Justificacion -->
+              <div class="col-12">
+                <label for="producto-justificacion">Justificación:</label>
+                <select id="producto-justificacion" class="form-control form-control-sm" required="">
+                  <option class="placeholder" value="" disabled="" selected="">Justificación de la aplicación</option>
+                  <!-- option value="1">JUS01 - Nombre de la justificación 1</option>
+                  <option value="2">JUS02 - Nombre de la justificación 2</option>
+                  <option value="3">JUS03 - Nombre de la justificación 3</option -->
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-sm btn-success" id="modal-producto-guardar">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--      -->
+    <!-- Menu -->
+    <!--      -->
+    <div class="offcanvas-container" id="mobile-menu">
+      <div class="account-link">
+        <div class="user-ava"><img src="img/user.png" alt="Daniel Arana" title="Daniel Arana"></div>
+        <div class="user-info">
+          <h6 class="user-name">Daniel Arana</h6>
+          <span class="text-sm text-white opacity-60">Usuario</span>
+        </div>
+      </div>
+      <nav class="offcanvas-menu">
+        <ul class="menu">
+          <li class="active"><a href="empleado-aplicacion.html">Aplicaciones</a></li>
+          <li><a href="#">Transferencias</a></li>
+          <li class="offcanvas-header"><h3 class="offcanvas-title">Opciones de usuario</h3></li>
+          <li><a href="perfil.html">Ver perfil</a></li>
+          <li><a href="index.html">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!--        -->
+    <!-- Header -->
+    <!--        -->
+    <div class="topbar d-none"></div>
+    <header class="navbar navbar-sticky">
+      <div class="site-branding"><div class="inner">
+        <a class="offcanvas-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
+      </div></div>
+      <h3 class="navbar-title with-menu">
+        <span class="d-md-inline d-none">Registro de</span> Aplicaciones <span class="d-sm-inline d-none">de Productos</span>
+      </h3>
+      <!-- Toolbar -->
+      <div class="toolbar"><div class="inner"><div class="tools">
+        <div class="search"><i class="icon-bell"></i></div>
+        <div class="account">
+          <!-- Icono del usuario -->
+          <i class="icon-head"></i> <span class="account-label">Usuario</span>
+          <ul class="toolbar-dropdown">
+            <!-- Breve info del usuario -->
+            <li class="sub-menu-user">
+              <div class="user-ava"><img src="img/user.png" alt="Daniel Arana" title="Daniel Arana"></div>
+              <div class="user-info">
+                <h6 class="user-name">Daniel Arana</h6>
+                <span class="text-xs text-muted">Usuario</span>
+              </div>
+            </li>
+            <!-- Menu del usuario -->
+            <li><a href="perfil.html"><i class="icon-cog"></i>Configurar perfil</a></li>
+            <li><a href="index.html"><i class="icon-unlock"></i>Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div></div></div>
+    </header>
+    <!--           -->
+    <!-- Contenido -->
+    <!--           -->
+    <div class="offcanvas-wrapper">
+      <div class="container-fluid">
+        <h3>Nueva aplicación de producto</h3>
+        <div class="accordion" id="aplicacion-acordeon" role="tablist">
+          <!-- Datos principales -->
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a class="collapsed" href="#aplicacion-datos-principales" data-toggle="collapse">Datos principales</a></h6>
+            </div>
+            <div class="collapse show" id="aplicacion-datos-principales" data-parent="#aplicacion-acordeon" role="tabpanel">
+              <div class="card-body">
+                <div class="form-group row">
+                  <!-- Fecha de aplicacion -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-fecha">Fecha de aplicación:</label>
+                    <input type="text" id="aplicacion-fecha" class="form-control form-control-sm date-input" placeholder="Fecha de aplicación">
+                  </div>
+                  <!-- Cultivo/Variedad -->
+                  <div class="col-lg-4 col-sm-8 col-12">
+                    <label for="aplicacion-cultivo-variedad">Cultivo/Variedad:</label>
+                    <input type="text" id="aplicacion-cultivo-variedad" class="form-control form-control-sm" placeholder="Nombre del cultivo / Variedad del cultivo">
+                  </div>
+                  <!-- Lote -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-lote">Lote:</label>
+                    <input type="text" id="aplicacion-lote" class="form-control form-control-sm" placeholder="Lote de la aplicación">
+                  </div>
+                  <!-- Campaña -->
+                  <div class="col-lg-4 col-sm-8 col-12">
+                    <label for="aplicacion-campanha">Campaña:</label>
+                    <input type="text" id="aplicacion-campanha" class="form-control form-control-sm" placeholder="Nombre de campaña">
+                  </div>
+                  <!-- Metodo de aplicacion -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-metodo">Método:</label>
+                    <select id="aplicacion-metodo" class="form-control form-control-sm" required="">
+                      <option class="placeholder" value="" disabled="" selected="">Método de aplicación</option>
+                    </select>
+                  </div>
+                  <!-- Volumenes de mezcla -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-volumen-total">Volumen total de mezcla (L):</label>
+                    <input type="number" id="aplicacion-volumen-total" class="form-control form-control-sm text-right" placeholder="Volumen total de mezcla (L)" min="0" step="0.01">
+                  </div>
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-volumen-hectarea">Volumen mezcla por ha (L):</label>
+                    <input type="number" id="aplicacion-volumen-hectarea" class="form-control form-control-sm text-right" placeholder="Volumen de mezcla por ha (L)" min="0" step="0.01">
+                  </div>
+                  <!-- Responsable -->
+                  <div class="col-lg-4 col-sm-8 col-12">
+                    <label for="aplicacion-responsable">Responsable:</label>
+                    <input type="text" id="aplicacion-responsable" class="form-control form-control-sm" placeholder="Responsable de la aplicación" value="Daniel Arana" disabled="">
+                  </div>
+                  <!-- Fecha de cosecha según carencia -->
+                  <div class="col-lg-2 col-sm-4 col-12">
+                    <label for="aplicacion-cosecha">Fecha posible de carencia:</label>
+                    <input type="text" id="aplicacion-cosecha" class="form-control form-control-sm date-input" placeholder="Fecha cosecha según carencia">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Productos -->
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a class="collapsed" href="#aplicacion-productos" data-toggle="collapse">Productos</a></h6>
+            </div>
+            <div class="collapse" id="aplicacion-productos" data-parent="#aplicacion-acordeon" role="tabpanel">
+              <div class="card-body search-results">
+                <div class="row">
+                  <div class="col-sm-auto col-12 search-buttons">
+                    <button class="btn btn-sm btn-success" id="modal-producto-abrir"><i class="icon-plus"></i> Agregar producto</button>
+                  </div>
+                  <div class="col-sm col-12 search-info">Mostrando un total de <strong id="productos-cantidad">0</strong> productos.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Otros datos -->
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a class="collapsed" href="#aplicacion-otros-datos" data-toggle="collapse">Otros datos</a></h6>
+            </div>
+            <div class="collapse" id="aplicacion-otros-datos" data-parent="#aplicacion-acordeon" role="tabpanel">
+              <div class="card-body">
+                <!-- Observaciones -->
+                <div class="form-group">
+                  <label for="aplicacion-observaciones">Observaciones:</label>
+                  <textarea id="aplicacion-observaciones" class="form-control mb-2" placeholder="Observaciones"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Botones -->
+        <div class="text-center">
+          <a class="btn btn-sm btn-info mt-2" href="empleado-aplicacion.html?borrador">Guardar borrador</a>
+          <a class="btn btn-sm btn-success mt-2" href="empleado-aplicacion.html?solicitar">Solicitar</a>
+          <a class="btn btn-sm btn-outline-secondary mt-2" href="empleado-aplicacion.html">Cancelar</a>
+        </div>
+      </div>
+    </div>
+    <!-- Boton para volver arriba -->
+    <a class="scroll-to-top-btn" href="#"><i class="icon-arrow-up"></i></a>
+    <!-- Backdrop -->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script type="text/javascript" src="js/third-party/vendor.min.js"></script>
+    <script type="text/javascript" src="js/third-party/scripts.min.js"></script>
+    <script type="text/javascript" src="js/third-party/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/utilidades.js"></script>
+    <script type="text/javascript" src="js/aplicacion/datos/metodo.js"></script>
+    <script type="text/javascript" src="js/aplicacion/datos/cultivo-variedad.js"></script>
+    <script type="text/javascript" src="js/aplicacion/datos/producto.js"></script>
+    <script type="text/javascript" src="js/aplicacion/borrador.js"></script>
+  </body>
+</html>

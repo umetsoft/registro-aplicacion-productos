@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registro de Aplicaciones de Productos | Inicio de sesión</title>
+    <!-- Meta tag para móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" media="screen" href="css/vendor.min.css">
+    <link id="mainStyles" rel="stylesheet" media="screen" href="css/styles.min.css">
+  </head>
+  <body class="login-body">
+    <!--        -->
+    <!-- Header -->
+    <!--        -->
+    <header class="navbar navbar-sticky">
+      <h3 class="navbar-title">
+        <span class="d-md-inline d-none">Registro de</span> Aplicaciones <span class="d-sm-inline d-none">de Productos</span>
+      </h3>
+    </header>
+    <!--           -->
+    <!-- Contenido -->
+    <!--           -->
+    <div class="container">
+      <!-- Formulario de inicio de sesion -->
+      <form class="login-box box-shadow" id="login-form" method="post">
+        <h4 class="login-title">Inicio de sesión</h4>
+        <!-- E-mail y contraseña -->
+        <div class="form-group input-group">
+          <input type="text" id="username" name="username" class="form-control" placeholder="Nombre de usuario" required="required">
+          <span class="input-group-addon"><i class="icon-head"></i></span>
+        </div>
+        <div class="form-group input-group">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="required">
+          <span class="input-group-addon"><i class="icon-lock"></i></span>
+          <div class="input-group-btn"><a class="btn btn-sm mt-1" id="show-password">Mostrar</a></div>
+        </div>
+        <!-- Kaptcha -->
+        <div class="form-group row">
+          <div class="col-sm-auto text-center">
+            <img src="img/kaptcha.png" class="kaptcha" alt="Código Kaptcha" title="Si no puede ver el código o desea uno nuevo, intente recargar la página o haga clic en el botón de &quot;Recargar la imagen&quot;.">
+          </div>
+          <div class="col">
+            <div class="input-group">
+              <input class="form-control" type="text" name="login-kaptcha" placeholder="Ingrese el código" required="required">
+              <span class="input-group-addon"><i class="icon-circle-check"></i></span>
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-info m-0" data-toggle="tooltip" data-placement="top" data-original-title="Recargar la imagen"><i class="icon-repeat mb-1"></i></button>
+          </div>
+        </div>
+        <!-- Ingresar y otras opciones -->
+        <!-- div class="row my-2">
+          <div class="col-6">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" id="login-remember-me" name="login-remember-me" checked="checked">
+              <label class="custom-control-label" for="login-remember-me">Recordar contraseña</label>
+            </div>
+          </div>
+          <div class="col-6 text-right">
+            <a class="navi-link text-bold" href="password.html">¿Olvidaste la contraseña?</a>
+          </div>
+        </div -->
+        <div class="text-center mt-2">
+          <button type="submit" class="btn btn-primary" id="login-submit">Ingresar</button>
+        </div>
+        <!-- Registro -->
+        <!-- hr class="my-3">
+        <div class="text-center">
+          ¿Aún no has creado tu cuenta? <a href="registro.html"><strong>Regístrate</strong></a>
+        </div -->
+      </form>
+    </div>
+    <!-- Boton para volver arriba -->
+    <a class="scroll-to-top-btn" href="#">
+      <i class="icon-arrow-up"></i>
+    </a>
+    <!-- Librerias, plugins y scripts propios de la pagina -->
+    <script type="text/javascript" src="js/third-party/vendor.min.js"></script>
+    <script type="text/javascript" src="js/utilidades.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+/*
+ * Botones
+ */
+.btn-success {
+	background-color: #61c672;
+}
+.btn-success:hover {
+	background-color: #4ca75b;
+}
+
+/*
+ * Filtros de busqueda
+ */
+.search-box{
+  background-color: #f5f5f5;
+  margin-bottom: .5rem;
+  padding: .5rem;
+}
+.hidden-mobile {
+	display: none;
+}
+@media (min-width: 576px) {
+	.search-box {
+		padding-bottom: 0;
+	}
+	.hidden-mobile {
+		display: block !important
+	}
+	#filter-button {
+		display: none
+	}
+}
+
+/*
+ * Acordeón de tarjetas
+ */
+.accordion .card {
+	margin-bottom: 0.5rem;
+}
+.accordion .card:last-child {
+	margin-bottom: 0;
+}
+.accordion .card-header {
+	padding: .75rem;
+	background-color: #bee9f7;
+}
+.accordion .card-body {
+	padding: .75rem;
+}
+.accordion .card-body .card {
+	background-color: #f7fcff;
+	padding: 0.5rem;
+}
+
+/*
+ * Pseudo-botones de dias trascurridos
+ */
+.d-inline-block .btn[disabled] {
+	cursor: default;
+	opacity: 1;
+}
+.btn.btn-days {
+	min-width: 4rem;
+}
+.btn.btn-days strong {
+	font-size: 18px;
+	vertical-align: top;
+}
+.btn.btn-days span {
+	vertical-align: middle;
+}
+
+/*
+ * Detalles de aplicación
+ */
+.aplicacion-detalles {
+	display: none;
+}
+.simple-list {
+	margin: 0;
+	padding-left: 1rem;
+	line-height: 1.5;
+}
+
+/*
+ * Resultados de la busqueda
+ */
+.search-info, .search-buttons {
+	-webkit-align-self: center;
+	-ms-flex-item-align: center;
+	align-self: center;
+}
+.search-buttons {
+	text-align: right;
+}
+.search-buttons .btn {
+	margin: 0 0 0.5rem 0.5rem;
+}
+.search-buttons .btn:first-child {
+	margin-left: 0;
+}
+@media (min-width: 576px) {
+	.search-buttons.col-sm-auto {
+		padding-left: 0;
+		order: 1;
+	}
+	.search-buttons.col-sm-auto .btn {
+		margin-bottom: 0;
+	}
+}
+@media (min-width: 768px) {
+	.search-buttons.col-md-auto {
+		padding-left: 0;
+		order: 1;
+	}
+	.search-buttons.col-md-auto .btn {
+		margin-bottom: 0;
+	}
+}
+
+/*
+ * Metodo de aplicacion
+ */
+optgroup {
+	background-color: #f5f5f5;
+}
+option {
+	background-color: #fff;
+}
+
+/*
+ * Lista de mochilas
+ */
+.custom-control {
+	margin-bottom: 0 !important;
+}
+@media (min-width: 576px) {
+	.col-sm-five {
+		-ms-flex: 0 0 20%;
+		flex: 0 0 20%;
+		max-width: 20%;
+	}
+}
+
+/*
+ * Autocompletado
+ */
+.ui-menu {
+  z-index: 20000;
+}
+
+/*
+ * Paginado
+ */
+
+.entry-navigation {
+	border: none;
+}
+.entry-navigation > .column {
+	padding: 0;
+}

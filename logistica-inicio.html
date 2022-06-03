@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registro de Aplicaciones de Productos | Aplicaciones</title>
+    <!-- Meta tag para moviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Estilos incluyendo: Bootstrap, Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" href="css/vendor.min.css">
+    <link id="mainStyles" rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link id="customStyles" rel="stylesheet" href="css/custom.css">
+    <!-- Modernizr -->
+    <script type="text/javascript" src="js/third-party/modernizr.min.js"></script>
+  </head>
+  <body>
+    <!-- Menu -->
+    <div class="offcanvas-container" id="mobile-menu">
+      <div class="account-link">
+        <div class="user-ava"><img src="img/user.png" alt="Daniel Arana" title="Daniel Arana"></div>
+        <div class="user-info">
+          <h6 class="user-name">Daniel Arana</h6>
+          <span class="text-sm text-white opacity-60">Usuario</span>
+        </div>
+      </div>
+      <nav class="offcanvas-menu">
+        <ul class="menu">
+          <li class="active"><a href="logistica-inicio.html">Inicio</a></li>
+          <li><a href="logistica-aplicacion.html">Solicitudes</a></li>
+          <li><a href="#">Por atender</a></li>
+          <li><a href="#">Históricos</a></li>
+          <li class="offcanvas-header"><h3 class="offcanvas-title">Opciones de usuario</h3></li>
+          <li><a href="perfil.html">Ver perfil</a></li>
+          <li><a href="index.html">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Header -->
+    <div class="topbar d-none"></div>
+    <header class="navbar navbar-sticky">
+      <div class="site-branding"><div class="inner">
+        <a class="offcanvas-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
+      </div></div>
+      <h3 class="navbar-title with-menu">
+        <span class="d-md-inline d-none">Registro de</span> Aplicaciones <span class="d-sm-inline d-none">de Productos</span>
+      </h3>
+      <!-- Toolbar -->
+      <div class="toolbar"><div class="inner"><div class="tools">
+        <div class="search"><i class="icon-bell"></i></div>
+        <div class="account">
+          <!-- Icono del usuario -->
+          <i class="icon-head"></i> <span class="account-label">Usuario</span>
+          <ul class="toolbar-dropdown">
+            <!-- Breve info del usuario -->
+            <li class="sub-menu-user">
+              <div class="user-ava"><img src="img/user.png" alt="Daniel Arana" title="Daniel Arana"></div>
+              <div class="user-info">
+                <h6 class="user-name">Daniel Arana</h6>
+                <span class="text-xs text-muted">Usuario</span>
+              </div>
+            </li>
+            <!-- Menu del usuario -->
+            <li><a href="perfil.html"><i class="icon-cog"></i>Configurar perfil</a></li>
+            <li><a href="index.html"><i class="icon-unlock"></i>Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div></div></div>
+    </header>
+    <!-- Contenido -->
+    <div class="offcanvas-wrapper">
+      <div class="container-fluid">
+        <h3 class="mb-2">Pantalla de inicio</h3>
+        <!-- Formulario de búsqueda -->
+        <form class="search-box">
+          <div class="form-group row">
+            <div class="col-lg-4 col-sm-8 col-12">
+              <label for="fecha-inicio">Fecha de aplicación:</label>
+              <div class="row">
+                <div class="col-6"><input type="text" id="fecha-inicio" name="fecha-inicio" class="form-control form-control-sm date-input" placeholder="Fecha de inicio"></div>
+                <div class="col-6"><input type="text" id="fecha-fin" name="fecha-fin" class="form-control form-control-sm date-input" placeholder="Fecha final"></div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-sm-4 col-12">
+              <label for="estado">Estado:</label>
+              <select id="estado" name="estado" class="form-control form-control-sm">
+                <option value="" selected="">Todos</option>
+                <option value="2">Solicitado</option>
+                <option value="3">Por atender</option>
+                <option value="4">Completado</option>
+                <option value="5">Rechazado</option>
+              </select>
+            </div>
+            <div class="col-lg-auto col-12 text-center mb-sm-2 mb-0">
+              <button type="submit" class="btn btn-sm btn-info"><i class="icon-search"></i> Buscar</button>
+              <button type="reset" class="btn btn-sm btn-secondary"><i class="icon-repeat"></i> Limpiar</button>
+            </div>
+          </div>
+        </form>
+        <!-- Resultados de la búsqueda -->
+        <div class="row">
+          <div class="col-md-5 col-12">
+            <canvas id="chart-resumen" width="500" height="250"></canvas>
+          </div>
+          <div class="col-md-7 col-12">
+            <canvas id="chart-ranking" width="500" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Boton para volver arriba -->
+    <a class="scroll-to-top-btn" href="#">
+      <i class="icon-arrow-up"></i>
+    </a>
+    <!-- Backdrop -->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script type="text/javascript" src="js/third-party/vendor.min.js"></script>
+    <script type="text/javascript" src="js/third-party/scripts.min.js"></script>
+    <script type="text/javascript" src="js/third-party/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/third-party/Chart.min.js"></script>
+    <script type="text/javascript" src="js/utilidades.js"></script>
+    <script type="text/javascript" src="js/aplicacion/inicio.js"></script>
+  </body>
+</html>
